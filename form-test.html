@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+
+<div>
+<form action="https://buttondown.com/api/emails/embed-subscribe/untitled.review" method="POST" id="newsletter">
+  <label for="email">Email: </label>
+  <input type="email" name="email" placeholder="your@email.com"  />
+  <input type="submit" value="Subscribe" id="form-button" />
+</form>
+</div>
+
+<script>
+const form = document.getElementById('newsletter');
+const formButton = document.getElementById('form-button');
+let isSubmitted = false;
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  if (isSubmitted) {
+    formButton.value = 'Subscribe';
+    isSubmitted = false;
+  }
+  
+  formButton.value = 'Subscribing...';
+  const formData = new FormData(form);
+
+  fetch(form.action, {
+    method: form.method,
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log(response);
+    formButton.value = 'Subscribed!';
+  })
+  .catch(error => {
+    console.error(error);
+    formButton.value = 'Subscribe';
+    const errorParagraph = document.createElement('p');
+      errorParagraph.innerHTML = 'Something didn\'t work! Subscribe manually at <a href="https://buttondown.com/untitled.review">buttondown.com/untitled.review</a>.';
+      errorParagraph.style = "margin:0"
+      form.parentNode.appendChild(errorParagraph);
+  });
+});
+</script>
+  
+</body>
+</html>
