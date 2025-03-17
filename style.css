@@ -3,13 +3,6 @@ font-family: "Avara";
 font-weight: normal; 
 src: url("Avara-Italic.woff") format("woff"); 
 }
-@font-face {
-    font-family: 'jgs5';
-    src: url('jgs5.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
 :root{
 --foreground: rgb(77, 65, 161);
 --background: rgb(255 255 255);
