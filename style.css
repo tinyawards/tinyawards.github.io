@@ -95,6 +95,7 @@ animation: fade 0.5s;
 #interior{
 display:flex;
 justify-content: center;
+align-items: center;
 }
 .doorway{
 flex-basis: 220px;
