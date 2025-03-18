@@ -276,7 +276,7 @@ margin-top:3em;
 }
 footer ul{
 display: flex;
-justify-content: space-around;
+justify-content: space-evenly;
 flex-wrap: wrap;
 padding:1em;
 }
