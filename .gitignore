@@ -1,15 +1,7 @@
 # dev files #
 *.pxd
 *.sketch
-support/
 *.command
-
-# Ignore temporary redirect files for testing #
-about.html
-submit.html
-2023.html
-2024.html
-
 
 
 # OS generated files #
