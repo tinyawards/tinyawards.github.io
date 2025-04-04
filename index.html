@@ -16,7 +16,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
 <link rel="manifest" href="/media/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Tiny Awards News" href="https://buttondown.com/tinyawards/rss">
-<script defer data-domains="tinyawards.net,tinyawards.github.io" data-do-not-track=true src="https://stats.urls.loan/script.js" data-website-id="cb5f1e3d-5f94-4153-84fc-6abb4931d509"></script>
+<script defer data-domains="tinyawards.net,tinyawards.github.io" src="https://stats.urls.loan/script.js" data-website-id="cb5f1e3d-5f94-4153-84fc-6abb4931d509"></script>
 <!-- Info -->
 <meta name="description" content="This is the home of the Tiny Awards, which, since 2023, has celebrated the best of the small, poetic, creative, handmade web.">
 <!-- Open Graph / Facebook -->
@@ -39,6 +39,7 @@ font-family: "Avara";
 font-weight: normal; 
 src: url("/Avara-Italic.woff") format("woff"); 
 }
+
 :root{
 --foreground: rgb(77, 65, 161);
 --background: rgb(255 255 255);
@@ -95,8 +96,6 @@ position: fixed;
 top:0;
 left:0;
 bottom:0;
-/* height: 100vh; */
-/* flex-basis: 50%; */
 display: flex;
 justify-content: center;
 align-items: stretch;
@@ -112,7 +111,7 @@ width: 80%;
 max-width: 500px;
 display: flex;
 flex-direction: column;
-/* -webkit-clip-path: border-box; */
+-webkit-clip-path: border-box;
 clip-path: border-box;
 background-color: var(--subtle);
 }
@@ -164,7 +163,7 @@ padding-top: 2em;
 display: flex;
 justify-content: center;
 align-items: center;
-view-transition-name: arch;
+
 }
 #pitcher{
 max-height: 50vh;
@@ -245,15 +244,113 @@ margin: 0 0.5em;
 
 footer ul{
 display: flex;
-justify-content: space-evenly;
+justify-content: start;
+align-items: center;
 flex-wrap: wrap;
-padding:1em;
-margin-top: 8em;
+padding:0;
+padding-top:1em;
 }
 footer li{
 list-style-type: none;
-padding: 0.3em;
+padding: 0.3em 1.2em 0 0.3em;
 }
+
+button#credit{
+cursor: pointer;
+font-family: inherit;
+font-size: inherit;
+color:inherit;
+background-color:inherit;
+border:none;
+padding:0;
+}
+button#credit:active{
+opacity: 0.7;
+}
+button#close{
+margin: 1em;
+display: block;
+cursor: pointer;
+font-family: inherit;
+font-size: inherit;
+padding: 4px 8px;
+appearance: none;
+background-color: var(--subtle);
+color: var(--foreground);
+border: 3px solid var(--foreground);
+transition: 0.5s;
+}
+button#close:hover{
+background-color: var(--hover);
+color: var(--foreground);
+}
+button#close:active{
+background-color: var(--foreground);
+color: var(--subtle);
+}
+
+#embedContainer{
+z-index: 20;
+position:fixed;
+top:0;right:0;left:0;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: start;
+overflow-y: scroll;
+}
+.slide-in{
+transition: 0.4s cubic-bezier(0.62,0.1,0.29,1.2);
+transition-property: transform, visibility;
+transform: translateY(0);
+visibility: visible;
+}
+.slide-out{
+transition: 0.4s cubic-bezier(0.79,-0.17,0.85,0.39);
+transition-property: transform, visibility;
+transform: translateY(110vh);
+visibility: hidden;
+}
+
+form#newsletter{
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+column-gap: 0.4em;
+font-weight: normal;
+}
+
+[type="submit"],[type="email"]{
+padding: 4px 8px;
+appearance: none;
+font-size: inherit;
+background-color: var(--subtle);
+color: var(--foreground);
+border: 3px solid var(--foreground);
+transition: 0.5s;
+}
+[type="email"]{
+flex-grow: 1;
+
+}
+[type="submit"]{
+cursor: pointer;
+}
+[type="submit"]:focus,[type="email"]:focus,[type="submit"]:hover,[type="email"]:hover{
+background-color: var(--hover);
+color: var(--foreground);
+}
+[type="submit"]:active{
+background-color: var(--foreground);
+color: var(--subtle);
+}
+
+@media (prefers-reduced-motion){
+.slide-in{animation: none;}
+}
+
 @media (prefers-color-scheme: dark) {
 	:root{
 	--foreground: rgb(255 255 255);
@@ -369,7 +466,24 @@ padding: 0.3em;
   </a>
 </div>
 </section>
+<section class="text">
+<svg class="logo" width="40px" style="transform: rotate(40deg);display: block; margin: auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 665">
+  <path fill-rule="evenodd" d="M333 39c-14 59-15 69-14 157v52l-11 3-13 4-58-115-57-115-19 20-36 40-19 21 70 67 69 69-5 17-6 15-34-1c-87-1-129 0-150 4-31 6-45 25-41 58 1 12 5 30 10 44l4 10 22-11a653 653 0 0 1 226-74l7 25a14004 14004 0 0 1-178 201l9 7c25 19 48 28 65 25 9-1 20-7 27-14 13-12 21-28 40-72 18-42 27-59 40-72 6-7 14-12 15-10l16 72c23 103 33 146 38 155 2 6 22 35 23 35l6-44a1113 1113 0 0 0-21-173l67 43 67 43 6-13 6-13-3-8c-10-28-28-48-58-63a479 479 0 0 0-54-22c-36-18-39-42-9-74 11-12 25-24 52-44l26-20a1752 1752 0 0 0-19-30l-3-3-10 4a11228 11228 0 0 0-60 23 394 394 0 0 1-2-106c4-40 3-52-16-117l-8-28-7 28" />
+</svg>
+</section>
 
+<section class="text">
+  <h2>Keep up with the Tiny Awards</h2>
+  <p>Join the the Tiny Awards Mailing List to stay informed:</p>
+
+  <form action="https://buttondown.com/api/emails/embed-subscribe/tinyawards" method="post" id="newsletter">
+<!--   <label for="email">Email: </label> -->
+  <input type="email" name="email" placeholder="Email" />
+  <input type="hidden" value="1" name="embed" />
+  <input type="submit" value="Subscribe" id="form-button" data-umami-event="newsletter-sign-up" />
+  </form>
+  <p id="error-message" hidden>Something didn't work! <a href="https://buttondown.com/tinyawards">Subscribe manually</a></p>
+</section>
 
 <footer class="text">
 <ul>
@@ -381,5 +495,107 @@ padding: 0.3em;
 </ul>
 </footer>
 
+<script>
+let expanded = false;
+
+function hidereceipt() {
+  expanded = false;
+  embedContainer.classList.remove('slide-in');
+  embedContainer.classList.add('slide-out');
+  button.setAttribute('aria-expanded', expanded);
+}
+
+function showreceipt() {
+  let skew = Math.random() * 4 - 2;
+  embedContainer.style.setProperty('--skew', skew + "deg");
+  expanded = true;
+  embedContainer.classList.add('slide-in');
+  embedContainer.classList.remove('slide-out');
+  button.setAttribute('aria-expanded', expanded);
+};
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && expanded) {
+    hidereceipt();
+  }
+});
+
+
+let footer = document.querySelector("footer > ul");
+let embedContainer = document.createElement('div');
+
+embedContainer.id = "embedContainer"
+embedContainer.classList.add("slide-out");
+
+let close = document.createElement('button')
+close.textContent = "▼ Close Receipt ▼"
+close.id = "close"
+
+let receipt = document.createElement('div');
+fetch('https://cheap.urls.loan/embed.html')
+      .then(response => response.text())
+      .then(text => receipt.innerHTML = text);
+receipt.id = "receipt"
+receipt.style.margin = "2em"
+receipt.style.transform = "rotate(var(--skew)"
+
+let list = document.createElement('li');
+let button = document.createElement('button');
+button.textContent = '░';
+button.id = "credit"
+button.setAttribute("aria-haspopup", true);
+button.setAttribute("aria-expanded", expanded);
+
+button.addEventListener('click', showreceipt);
+close.addEventListener('click', hidereceipt);
+embedContainer.addEventListener('click', (e) => {
+  if (e.target === embedContainer) {
+    hidereceipt();
+  }
+});
+
+list.appendChild(button)
+footer.appendChild(list);
+/* embedContainer.appendChild(close); */
+embedContainer.appendChild(receipt);
+document.body.appendChild(embedContainer);
+</script>
+
+<script>
+const form = document.getElementById('newsletter');
+const formButton = document.getElementById('form-button');
+const errorMessage = document.getElementById('error-message');
+let isSubmitted = false;
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  if (isSubmitted) {
+    formButton.value = 'Subscribe';
+    isSubmitted = false;
+  }
+  
+  formButton.value = 'Subscribing.';
+  const formData = new FormData(form);
+
+  fetch(form.action, {
+    method: form.method,
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log(response);
+    formButton.value = 'Subscribed!';
+    errorMessage.hidden = true;
+  })
+  .catch(error => {
+    console.error(error);
+    umami.track(error);
+    formButton.value = 'Subscribe';
+    errorMessage.hidden = false;
+  });
+});
+</script>
 </body>
 </html>

@@ -16,7 +16,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
 <link rel="manifest" href="/media/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Tiny Awards News" href="https://buttondown.com/tinyawards/rss">
-<script defer data-domains="tinyawards.net,tinyawards.github.io" data-do-not-track=true src="https://stats.urls.loan/script.js" data-website-id="cb5f1e3d-5f94-4153-84fc-6abb4931d509"></script>
+<script defer data-domains="tinyawards.net,tinyawards.github.io" src="https://stats.urls.loan/script.js" data-website-id="cb5f1e3d-5f94-4153-84fc-6abb4931d509"></script>
 <!-- Info -->
 <meta name="description" content="This is the home of the Tiny Awards, which, since 2023, has celebrated the best of the small, poetic, creative, handmade web.">
 <!-- Open Graph / Facebook -->
@@ -311,13 +311,72 @@ margin-top:3em;
 }
 footer ul{
 display: flex;
-justify-content: space-evenly;
+justify-content: start;
+align-items: center;
 flex-wrap: wrap;
-padding:1em;
+padding:0;
 }
 footer li{
 list-style-type: none;
-padding: 0.3em;
+padding: 0.3em 1.2em 0 0.3em;
+}
+
+button#credit{
+cursor: pointer;
+font-family: inherit;
+font-size: inherit;
+color:inherit;
+background-color:inherit;
+border:none;
+padding:0;
+}
+button#credit:active{
+opacity: 0.7;
+}
+button#close{
+margin: 1em;
+display: block;
+cursor: pointer;
+font-family: inherit;
+font-size: inherit;
+padding: 4px 8px;
+appearance: none;
+background-color: var(--subtle);
+color: var(--foreground);
+border: 3px solid var(--foreground);
+transition: 0.5s;
+}
+button#close:hover{
+background-color: var(--hover);
+color: var(--foreground);
+}
+button#close:active{
+background-color: var(--foreground);
+color: var(--subtle);
+}
+
+#embedContainer{
+z-index: 20;
+position:fixed;
+top:0;right:0;left:0;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: start;
+overflow-y: scroll;
+}
+.slide-in{
+transition: 0.4s cubic-bezier(0.62,0.1,0.29,1.2);
+transition-property: transform, visibility;
+transform: translateY(0);
+visibility: visible;
+}
+.slide-out{
+transition: 0.4s cubic-bezier(0.79,-0.17,0.85,0.39);
+transition-property: transform, visibility;
+transform: translateY(110vh);
+visibility: hidden;
 }
 
 @media (max-width: 800px) {
@@ -399,9 +458,9 @@ padding: 0.3em;
     <h1>2023 Winner:<br><a href="https://rotatingsandwiches.com/">Rotating sandwiches</a></h1>
     <h2>Created by Lauren Walker</h2>
     
-    <p>As the name suggests, Rotating Sandwiches has a singular purpose &mdash; to showcase rotating images of sandwiches that its owner Lauren Walker has enjoyed. It is small, fun, pointless, playful, whimsical, silly and lovely, all of the qualities we wished to embody with these awards &mdash; it is a worthy winner.</p>   
+    <p>As the name suggests, Rotating Sandwiches has a singular purpose&mdash;to showcase rotating images of sandwiches that its owner Lauren Walker has enjoyed. It is small, fun, pointless, playful, whimsical, silly and lovely, all of the qualities we wished to embody with these awards&mdash;it is a worthy winner.</p>   
      
-    <blockquote>&ldquo;I'm thrilled to win and one of the best things about winning Tiny Awards is getting to explore the sites created by all the other nominees &mdash; every finalist embodies the vision of a smaller, more curious, more surreal web so many people my age feel has been lost.&rdquo;<br>
+    <blockquote>&ldquo;I'm thrilled to win and one of the best things about winning Tiny Awards is getting to explore the sites created by all the other nominees&mdash;every finalist embodies the vision of a smaller, more curious, more surreal web so many people my age feel has been lost.&rdquo;<br>
 <span style="display:block;text-align:right">&ndash;&nbsp;Lauren Walker</span></blockquote>
     
     <table>
@@ -448,7 +507,7 @@ padding: 0.3em;
     
   </section>
 
-<footer>
+<footer class="text">
 <ul>
 	<li><a href="/">Index</a></li>
 	<li><a href="/faqs/">FAQs</a></li>
@@ -457,6 +516,72 @@ padding: 0.3em;
 	<li><a href="/2023/">2023 Awards</a></li>
 </ul>
 </footer>
+
+<script>
+let expanded = false;
+
+function hidereceipt() {
+  expanded = false;
+  embedContainer.classList.remove('slide-in');
+  embedContainer.classList.add('slide-out');
+  button.setAttribute('aria-expanded', expanded);
+}
+
+function showreceipt() {
+  let skew = Math.random() * 4 - 2;
+  embedContainer.style.setProperty('--skew', skew + "deg");
+  expanded = true;
+  embedContainer.classList.add('slide-in');
+  embedContainer.classList.remove('slide-out');
+  button.setAttribute('aria-expanded', expanded);
+};
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && expanded) {
+    hidereceipt();
+  }
+});
+
+
+let footer = document.querySelector("footer > ul");
+let embedContainer = document.createElement('div');
+
+embedContainer.id = "embedContainer"
+embedContainer.classList.add("slide-out");
+
+let close = document.createElement('button')
+close.textContent = "▼ Close Receipt ▼"
+close.id = "close"
+
+let receipt = document.createElement('div');
+fetch('https://cheap.urls.loan/embed.html')
+      .then(response => response.text())
+      .then(text => receipt.innerHTML = text);
+receipt.id = "receipt"
+receipt.style.margin = "2em"
+receipt.style.transform = "rotate(var(--skew)"
+
+let list = document.createElement('li');
+let button = document.createElement('button');
+button.textContent = '░';
+button.id = "credit"
+button.setAttribute("aria-haspopup", true);
+button.setAttribute("aria-expanded", expanded);
+
+button.addEventListener('click', showreceipt);
+close.addEventListener('click', hidereceipt);
+embedContainer.addEventListener('click', (e) => {
+  if (e.target === embedContainer) {
+    hidereceipt();
+  }
+});
+
+list.appendChild(button)
+footer.appendChild(list);
+/* embedContainer.appendChild(close); */
+embedContainer.appendChild(receipt);
+document.body.appendChild(embedContainer);
+</script>
 </main>
 
 <nav>
