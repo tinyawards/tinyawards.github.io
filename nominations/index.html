@@ -443,10 +443,15 @@ visibility: hidden;
 #pitcher-text{visibility:visible}
 
 #nomination {
-
-  & tr{height: 1px} 
-  /* oh god this is really the best way? */
+  /* save me firefox dev team */
+  & tr { height: unset; }
+  & td + td > input, textarea#text {
+    position: absolute;
+    inset: 0;
+  }
   & td{
+  position: relative; 
+  height: 2em;
   border:3px solid;
   padding: 4px;
   box-sizing: border-box;
@@ -454,6 +459,7 @@ visibility: hidden;
   }
   & .input{
   padding: 0;
+  font-family: Arial, sans-serif;
   }
 
   & td > input,textarea#text{
