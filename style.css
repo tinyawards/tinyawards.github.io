@@ -58,7 +58,7 @@ font-family: "Avara", serif;
 details p:last-child{
 margin-bottom:0;
 }
-details ul{
+ul{
 list-style-image: url("data:image/gif;base64,R0lGODdhDQARAJEAAAAAAE1Bof///wAAACH5BAkAAAMALAAAAAANABEAAAIknI9pcazhRkxwqcbmkxdnD4WVNC4aVT5Z2ljs6JRyh7DXSQ8FADs=");
 padding-left: 17px;
 }
@@ -219,6 +219,9 @@ padding: 0;
 display: flex;
 margin:0;
 }
+ul#nav-right {
+list-style: none;
+}
 #nav-right li{
 list-style-type: none;
 padding: 0;
@@ -277,6 +280,7 @@ margin: auto;
 margin-top:3em;
 }
 footer ul{
+list-style: none;
 display: flex;
 justify-content: start;
 align-items: center;
