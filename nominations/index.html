@@ -443,26 +443,32 @@ visibility: hidden;
 #pitcher-text{visibility:visible}
 
 #nomination {
-  /* save me firefox dev team */
-  & tr { height: unset; }
-  & td + td > input, textarea#text {
-    position: absolute;
-    inset: 0;
+  
+  & .row{
+    border-bottom:3px solid;
+    display: flex;
+    width: 100%;
   }
-  & td{
-  position: relative; 
-  height: 2em;
-  border:3px solid;
+  & .row:last-child{border-bottom: 0px solid;}
+
+  & .label,.input{
+  border-left:1.5px solid;
+  border-right:1.5px solid;
   padding: 4px;
   box-sizing: border-box;
-  height: inherit
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  }
+  .label{
+    max-width: 40%;
+    & p{margin:0;}
   }
   & .input{
   padding: 0;
-  font-family: Arial, sans-serif;
   }
-
-  & td > input,textarea#text{
+  & input,textarea#text{
+  font-family: Arial, sans-serif;
   box-sizing: border-box;
   font-size: inherit;
   color: var(--foreground);
@@ -477,14 +483,6 @@ visibility: hidden;
   transition: 0.5s ;
   transition-property: background-color;
   }
-  & .colspan{
-  text-align: center;
-  }
-  & .break > td{
-  border:none;
-  }
-
-
   & input:focus{
   outline: none;
   }
@@ -500,6 +498,7 @@ visibility: hidden;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 100%;
   -webkit-user-select: none;
   user-select: none;
   box-sizing: content-box;
@@ -525,6 +524,13 @@ visibility: hidden;
   }
   & .required{
   opacity: 0.6;
+  }
+  .form{
+  margin-top: 1em;
+  border-top:3px solid;
+  border-bottom:3px solid;
+  border-left:1.5px solid;
+  border-right:1.5px solid;
   }
 
   & [type="submit"]{
@@ -602,46 +608,41 @@ visibility: hidden;
 
     <form action="https://script.google.com/macros/s/AKfycbzFdd7AqJ7W_V4V1zXIs_GuC1rnoZ__Ro6o9nOjsKtxMQnPHrqqw5Mbw5qpodzb2s3v/exec" method="POST" id="submissions">
 
-    <table id="nomination">
-      <colgroup>
-        <col span="1" style="width: 40%;">
-        <col span="1">
-      </colgroup>
-      <tr>
-        <td class="label"><label for="website-name">Website/Project Name<span class="required">*</span></label></td>
-        <td class="input"><input type="text" id="website-name" name="website-name" required placeholder="Website Name" /></td>
-      </tr>
-      <tr>
-        <td class="label"><label for="url">Project URL<span class="required">*</span></label></td>
-        <td class="input"><input required id="url" name="url" placeholder="tinyawards.net" ></td>
-      </tr>
-      <tr>
-        <td class="label">Any additional information about the project that you would like us to know?</td>
-        <td class="input"><textarea id="text" name="notes" rows="3" placeholder="Type something here"></textarea></td>
-      </tr>
-      <tr>
-        <td class="label"><label for="email">Email contact<span class="required">*</span></label></td>
-        <td class="input"><input required type="email" id="email" name="email" placeholder="your@email.com" /></td>
-      </tr>
 
-      <tr>
-        <td class="label">Do you want to join our mailing list?<br>You'll get notified when it is time to vote<span class="required">*</span></td>
-
-      <td class="input">
-        <div id="newsletter">
-          <input hidden required type="radio" id="yes" value="true" name="newsletter" checked>
-          <label for="yes">Yes</label>
-          <input hidden required type="radio" id="no" value="false" name="newsletter">
-          <label for="no">No</label>
+    <div id="nomination">
+      <div class="form">
+      <div class="row">
+        <div class="label"><label for="website-name">Website/<wbr>Project Name<span class="required">*</span></label></div>
+        <div class="input"><input type="text" id="website-name" name="website-name" required placeholder="Website Name" /></div>
+      </div>
+      <div class="row">
+        <div class="label"><label for="url">Project URL<span class="required">*</span></label></div>
+        <div class="input"><input required id="url" name="url" placeholder="tinyawards.net" ></div>
+      </div>
+      <div class="row">
+        <div class="label"><p>Any additional information about the project that you would like us to know?</p></div>
+        <div class="input"><textarea id="text" name="notes" rows="3" placeholder="Type something here"></textarea></div>
+      </div>
+      <div class="row">
+        <div class="label"><label for="email">Email contact<span class="required">*</span></label></div>
+        <div class="input"><input required type="email" id="email" name="email" placeholder="your@email.com" /></div>
+      </div>
+      <div class="row">
+        <div class="label"><p>Do you want to join our mailing list?<br>You'll get notified when it is time to vote<span class="required">*</span></p></div>
+        <div class="input">
+          <div id="newsletter">
+            <input hidden required type="radio" id="yes" value="true" name="newsletter" checked>
+            <label for="yes">Yes</label>
+            <input hidden required type="radio" id="no" value="false" name="newsletter">
+            <label for="no">No</label>
+          </div>
         </div>
-      </tr>
-      
-      <tr class="break"><td colspan="2">&nbsp;</td></tr>
-      
-        <td data-umami-event="nomination" colspan="2" class="input"><input type="submit" value="Submit" id="form-button" /></td>
-      <tr>
-      </tr>
-    </table>
+      </div>
+      </div>
+      <div class="form">
+        <div class="input"><input data-umami-event="nomination" type="submit" value="Submit" id="form-button" /></div>
+      </div>
+    </div>
 
     </form>
   </section>
