@@ -442,7 +442,11 @@ visibility: hidden;
 <style>
 #pitcher-text{visibility:visible}
 
-#nomination {
+#vote {
+  & fieldset{
+  border: none;
+  padding:0;
+  }
   
   & .row{
     border-bottom:3px solid;
@@ -494,7 +498,7 @@ visibility: hidden;
   outline: none;
   }
 
-  & #newsletter{
+  & #newsletter-subscribe{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -503,24 +507,32 @@ visibility: hidden;
   user-select: none;
   box-sizing: content-box;
   height: 2.5em;
+    & label{
+    box-sizing: border-box;
+    padding: 0.3em;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: 0.3s;
+    border: solid 2px var(--hover);
+    width: 4em;
+    text-align: center;
+    }
+    & label:hover,label:active{
+    border: solid 2px var(--hover);
+    background-color: var(--subtle);
+    }
+    & input:checked + label{
+    border: solid 2px var(--foreground);
+    }
   }
-
-  & #newsletter > label{
-  box-sizing: border-box;
-  padding: 0.3em;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 100%;
-  width: 4em;
-  transition: 0.3s;
-  border: solid 2px var(--hover);
+  #email-label{
+    border-radius: 0%;
+    width: inherit;
+    border: none;
   }
-  & #newsletter > label:hover,#newsletter > label:active{
-  border: solid 2px var(--hover);
-  background-color: var(--subtle);
-  }
-  & #yes:checked ~ [for="yes"], #no:checked ~ [for="no"]{
-  border: solid 2px var(--foreground);
+  #email-label:hover{
+    border:none;
+    background-color: unset;
   }
   & .required{
   opacity: 0.6;
@@ -532,7 +544,34 @@ visibility: hidden;
   border-left:1.5px solid;
   border-right:1.5px solid;
   }
-
+  
+  #nominations{
+    border:3px solid;
+    & h3{
+    padding: 0.5em 4px;
+    margin-top: 0.2em;
+    border-bottom: 3px solid;
+    }
+    .site{
+      margin: 0.5em;
+      a{
+        text-transform: none;
+      }
+    }
+    & input{
+      width: 1rem;
+      height: 1rem;
+      border: solid 2px var(--foreground);
+      border-radius: 0.2em;
+      margin-right: 0.2em;
+      cursor: pointer;
+    }
+    & input:checked{
+      width: 1rem;
+      height: 1rem;
+      background-color: var(--foreground);
+    }
+  }
   & [type="submit"]{
   cursor: pointer;
   }
@@ -550,6 +589,39 @@ visibility: hidden;
   color: var(--background);
   }
 }
+
+form#newsletter{
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 0.4em;
+font-weight: normal;
+  [type="submit"],[type="email"]{
+  padding: 4px 8px;
+  appearance: none;
+  font-size: inherit;
+  background-color: var(--subtle);
+  color: var(--foreground);
+  border: 3px solid var(--foreground);
+  transition: 0.5s;
+  }
+  [type="email"]{
+  flex-grow: 1;
+  }
+  [type="submit"]{
+  cursor: pointer;
+  }
+  [type="submit"]:focus,[type="email"]:focus,[type="submit"]:hover,[type="email"]:hover{
+  background-color: var(--hover);
+  color: var(--foreground);
+  }
+  [type="submit"]:active{
+  background-color: var(--foreground);
+  color: var(--subtle);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -604,33 +676,38 @@ visibility: hidden;
 
 <main>
   <section class="info">
-    <h1>Nominate a Site!</h1>
-
     <form action="https://script.google.com/macros/s/AKfycbzFdd7AqJ7W_V4V1zXIs_GuC1rnoZ__Ro6o9nOjsKtxMQnPHrqqw5Mbw5qpodzb2s3v/exec" method="POST" id="submissions">
 
+    <h1>Vote for the 2025 Tiny Awards Winner</h1>
+    <p>All that remains is for YOU, online stranger, to vote for the site you think deserves to win the Tiny Awards 2025.</p>
 
-    <div id="nomination">
+      
+    <div id="vote">
+      <div id="nominations">
+        <h3>Site of the Year Nominees:</h3>
+        
+        <div class="site">
+          <input required type="radio" id="website1" name="vote" value="website1" data-vote-url="https://example.com" />
+          <a href="">Website</a>
+
+        </div>
+        <div class="site">
+          <input required type="radio" id="website2" name="vote" value="website2" data-vote-url="https://example.com" />
+          <label for="website2"><a href="https://example.com">Website</a></label>
+        </div>
+
+      </div>
+
+    
       <div class="form">
       <div class="row">
-        <div class="label"><label for="website-name">Website/<wbr>Project Name<span class="required">*</span></label></div>
-        <div class="input"><input type="text" id="website-name" name="website-name" required placeholder="Website Name" /></div>
-      </div>
-      <div class="row">
-        <div class="label"><label for="url">Project URL<span class="required">*</span></label></div>
-        <div class="input"><input required id="url" name="url" placeholder="tinyawards.net" ></div>
-      </div>
-      <div class="row">
-        <div class="label"><p>Any additional information about the project that you would like us to know?</p></div>
-        <div class="input"><textarea id="text" name="notes" rows="3" placeholder="Type something here"></textarea></div>
-      </div>
-      <div class="row">
-        <div class="label"><label for="email">Email contact<span class="required">*</span></label></div>
+        <div class="label"><label id="email-label" for="email">Email contact<span class="required">*</span></label></div>
         <div class="input"><input required type="email" id="email" name="email" placeholder="your@email.com" /></div>
       </div>
       <div class="row">
-        <div class="label"><p>Do you want to join our mailing list?<br>You'll get notified when it is time to vote<span class="required">*</span></p></div>
+        <div class="label"><p>Do you want to join our mailing list?<span class="required">*</span></p></div>
         <div class="input">
-          <div id="newsletter">
+          <div id="newsletter-subscribe">
             <input hidden required type="radio" id="yes" value="true" name="newsletter" checked>
             <label for="yes">Yes</label>
             <input hidden required type="radio" id="no" value="false" name="newsletter">
@@ -640,24 +717,46 @@ visibility: hidden;
       </div>
       </div>
       <div class="form">
-        <div class="input"><input data-umami-event="nomination" type="submit" value="Submit" id="form-button" /></div>
+        <div class="input"><input data-umami-event="vote" type="submit" value="Vote!" id="vote-button" /></div>
       </div>
     </div>
 
     </form>
+    
+    <div hidden id="vote-confirmation">
+      <h1>Thanks for voting in the 2025 Tiny Awards</h1>
+      <p id="vote-message">You voted for <a id="vote-record" href=""></a>!</p>
+      <p>Here are all the finalists this year as chosen by our wonderful <a href="https://tinyawards.net/#judges">judges</a>:</p>
+      <table>
+    	<tr>
+    	<th class="table-heading" rowspan="12">Finalists</th>
+    	<td><a href="https://alttextselfies.net/selfies/">Alt Text Selfies</a></td></tr>
+    	<tr><td><a href="https://accumulationofthings.com/twine/beasts.html">An Abundance of Beasts</a></td></tr>
+    	<tr><td><a href="https://lyra.horse/antonymph/">Antonymph</a></td></tr>
+    	<tr><td><a href="https://diagram.website/">Diagram Website</a></td></tr>
+    	<tr><td><a href="https://feminisminasia.com/">Feminism and Identity in Asia</a></td></tr>
+    	<tr><td><a href="https://www.dayroselane.com/hydrants">Hydrant Directory</a></td></tr>
+    	<tr><td><a href="https://neal.fun/infinite-craft/">Infinite Craft</a></td></tr>
+    	<tr><td><a href="https://oneminutepark.tv/">One Minute Park</a></td></tr>
+    	<tr><td><a href="https://modularstreet.net/">LEGO Modular Streetscaper</a></td></tr>
+    	<tr><td><a href="https://marigold.town/">Marigold Town</a></td></tr>
+    	<tr><td><a href="https://www.noteson.love/submit/">Notes on Love</a></td></tr>
+    	<tr><td> <a href="https://river.maxbittker.com/?id=9602498">River</a></td></tr>
+    </table>
+      <p>Voting runs from August 5th to August 31, and winners will be announced in September.</p>
+      
+      <p>Want to be the first to know this year's winner? Subscribe to &ldquo;Tiny Awards News&rdquo; below&mdash;we promise we&apos;ll never do anything weird, nefarious or unpleasantly-commercial with your email.</p>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/tinyawards" method="post" id="newsletter">
+  <input type="email" name="email" placeholder="Email" />
+  <input type="hidden" value="1" name="embed" />
+  <input type="submit" value="Subscribe" id="newsletter-button" data-umami-event="newsletter-sign-up" />
+  </form>
+    <p id="error-message" hidden>Something didn't work! <a href="https://buttondown.com/tinyawards">Subscribe manually</a></p>
+    </div>
   </section>
 
   <section class="info">
-  <h3>What sort of websites are eligible?</h3>
-  <p>To be eligible for selection, projects must meet the following criteria:
-  <ul>
-  	<li>Non-commercial: projects must not be intended for commercial end; projects which feature some sort of merchandise/donation mechanic are eligible, but this must be secondary to the project&apos;s primary scope/focus.</li>
-  	<li>URL-based: projects must exist on their own, unique URL (on a URL you&mdash;or the website maker, if not the submitter&mdash;own. It can be a subdomain/subdirectory/file sitting somewhere off the main domain).</li>
-  	<li>No apps/downloads: projects that exist as apps and/or require a download are excluded from selection.</li>
-  	<li>No agencies or brands: individuals or groups of creators only.</li>
-  	<li>Launched between July 2024 and July 2025</li>
-  </ul>
-  </p>
+<!-- something here idk -->
   </section>
 
 <footer class="text">
@@ -769,6 +868,47 @@ document.body.appendChild(embedContainer);
 </nav>
 
 <script>
+
+const form = document.getElementById('submissions');
+const voteButton = document.getElementById('vote-button');
+let isSubmitted = false;
+
+const newsletter = document.getElementById('newsletter');
+const newsletterButton = document.getElementById('newsletter-button');
+const errorMessage = document.getElementById('error-message');
+let isNewsletterSubmitted = false;
+
+const voteConfirmation = document.getElementById('vote-confirmation');
+const voteMessage = document.getElementById('vote-message');
+const voteRecord = document.getElementById('vote-record');
+
+/* READ VOTE COOKIE */
+function getCookie(name) {
+  const cookieString = document.cookie;
+  const cookies = cookieString.split('; ');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const [cookieName, cookieValue] = cookie.split('=');
+    if (cookieName === name) {
+      return decodeURIComponent(cookieValue);
+    }
+  }
+  return null;
+}
+
+const voteValue = getCookie('vote');
+const voteURLValue = getCookie('voteURL');
+
+
+if (voteValue){
+form.hidden = true;
+voteConfirmation.hidden = false;
+voteRecord.href = voteURLValue
+voteRecord.innerText = voteValue
+} else {
+console.log(false)
+}
+
 /* CONFETTI EFFECT */
 
 var image = new Image();
@@ -954,34 +1094,23 @@ var Confetti = (function () {
 
 /* ACTUAL IMPORTANT SCRIPT */
 
-const form = document.getElementById('submissions');
-const formButton = document.getElementById('form-button');
-let isSubmitted = false;
-
-const urlInput = document.getElementById('url');
-urlInput.addEventListener('input', () => {
-  const url = urlInput.value;
-  const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-  if (urlRegex.test(url)) {
-    urlInput.setCustomValidity('');
-  } else {
-    urlInput.setCustomValidity('Enter a URL');
-  }
-});
-
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
   if (isSubmitted) {
     return;
   }
+
+  const formData = new FormData(form);
+  
+  const vote = document.querySelector("[name=vote]:checked");
+  document.cookie = "vote=" + vote.value + ";voteURL=" + vote.dataset.voteUrl + ";max-age=15768000"
   
   isSubmitted = false;
-  formButton.value = 'Submitting...';
-  formButton.disabled = true;
+  voteButton.value = 'Voting...';
+  voteButton.disabled = true;
   
-  const formData = new FormData(form);
-
+  
   fetch(form.action, {
     method: form.method,
     body: formData
@@ -991,9 +1120,9 @@ form.addEventListener('submit', function(event) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     console.log(response);
-    formButton.value = 'Submitted!';
+    voteButton.value = 'Submitted!';
     
-    var confetti = new Confetti('form-button');
+    var confetti = new Confetti('vote-button');
 
     confetti.setCount(20);
     confetti.setSize(6);
@@ -1006,27 +1135,53 @@ form.addEventListener('submit', function(event) {
   })
   .catch(error => {
     console.error(error);
-    formButton.value = 'Submit';
+    voteButton.value = 'Submit';
     const errorParagraph = document.createElement('p');
       errorParagraph.innerHTML = 'Something didn\'t work! Reach out to <a href="mailto:hi@tinyawards.net">hi@tinyawards.net</a>.';
       errorParagraph.style = "margin:0"
       form.parentNode.appendChild(errorParagraph);
   })
   .finally(() => {
+/* replace w/ voted thank you */
+
     isSubmitted = false;
-    formButton.disabled = false;
     
-    setTimeout(() => {
-      form.reset();
-      const errorParagraph = form.parentNode.querySelector('p');
-      if (errorParagraph) {
-        errorParagraph.remove();
-      }
-      formButton.value = 'Submit';
-    }, 3000);
+    form.hidden = true;
+    voteConfirmation.hidden = false;
+    voteRecord.href = vote.dataset.voteUrl
+    voteRecord.innerText = vote.value
   });
 });
 
+newsletter.addEventListener('submit', function(event) {
+  event.preventDefault();
+  if (isNewsletterSubmitted) {
+    newsletterButton.value = 'Subscribe';
+    isNewsletterSubmitted = false;
+  }
+  
+  newsletterButton.value = 'Subscribing...';
+  const newsletterData = new FormData(newsletter);
+
+  fetch(newsletter.action, {
+    method: newsletter.method,
+    body: newsletterData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log(response);
+    newsletterButton.value = 'Subscribed!';
+    errorMessage.hidden = true;
+  })
+  .catch(error => {
+    console.error(error);
+    umami.track(error);
+    newsletterButton.value = 'Subscribe';
+    errorMessage.hidden = false;
+  });
+});
 </script>
 </body>
 </html>

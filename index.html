@@ -460,7 +460,7 @@ color: var(--subtle);
 </section>
 
 <section class="arch">
-  <a class="window" href="nominations/" data-umami-event="homepage-arch">
+  <a class="window" href="vote/" data-umami-event="homepage-arch">
     <div class="interior">
       <div class="arch-left"></div>
         <svg id="pitcher" alt="A line drawing of a person carrying a large ornate pitcher on their shoulder. They pour the pitcher into a well; the contents of the pitcher sparkle and spell out 'Tiny Awards'. The image seems almost ancient Greek, yet distinctly modern." xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1014 1396">
@@ -473,7 +473,7 @@ color: var(--subtle);
       </svg>
       <div class="arch-right"></div>
     </div>
-    <p class="caption">Nominations</p>
+    <p class="caption">Vote for the 2025 Winner</p>
   </a>
 </section>
 
@@ -542,7 +542,7 @@ color: var(--subtle);
 <ul>
 	<li><a href="/">Index</a></li>
 	<li><a href="/faqs/">FAQs</a></li>
-	<li><a href="/nominations/">Nominations</a></li>
+	<li><a href="/vote/">Vote</a></li>
 	<li><a href="/2024/">2024 Awards</a></li>
 	<li><a href="/2023/">2023 Awards</a></li>
 </ul>
@@ -628,7 +628,7 @@ form.addEventListener('submit', function(event) {
     isSubmitted = false;
   }
   
-  formButton.value = 'Subscribing.';
+  formButton.value = 'Subscribing...';
   const formData = new FormData(form);
 
   fetch(form.action, {
