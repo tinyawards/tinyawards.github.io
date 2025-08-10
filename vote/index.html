@@ -1176,7 +1176,8 @@ form.addEventListener('submit', function(event) {
   })
   .finally(() => {
 /*     newsletter fetch */
-    if (newsletterSignUp.value) {
+    if (newsletterSignUp.value == true) {
+    
       const newsletterSignUpVote = new FormData()
       newsletterSignUpVote.append("email", document.getElementById('email').value);
       
