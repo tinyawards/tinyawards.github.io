@@ -1,0 +1,303 @@
+---
+import '/src/style.css';
+import SEO from '/src/components/seo.astro';
+import Footer from '/src/components/footer.astro';
+import Wall from '/src/components/wall.astro';
+import MiniArch from '/src/components/mini-arch.astro';
+
+const { title, description, content } = Astro.props;
+
+import { getCollection } from 'astro:content';
+const allContent = await getCollection('content');
+const sortedContent = allContent.sort((a, b) => a.data.order - b.data.order);
+
+const currentIndex = sortedContent.findIndex((post) => {
+  const postPath = `/${post.id}`;
+  return content.url === postPath || content.url === `${postPath}/`;
+});
+
+const prevPost = currentIndex > 0 ? sortedContent[currentIndex - 1] : null;
+const nextPost = currentIndex < sortedContent.length - 1 ? sortedContent[currentIndex + 1] : null;
+
+const skyPosition = 100 - (currentIndex * 10)
+
+const Center = content.projectUrl ? 'a' : 'div';
+
+const slotContent = await Astro.slots.render('default');
+const hasContent = !!slotContent?.trim();
+---
+
+<html lang="en">
+<!-- 
+    GET YOUR OWN ARTISAN HTML @ 
+      ✨ CHEAP.URLS.LOAN ✨
+"MORE CONVENIENT THAN A NEW HOBBY" 
+-->
+	<head>
+		<SEO title={title ? "Tiny Awards " + title : "Tiny Awards"} description={description ? description : "This is the home of the Tiny Awards, which, since 2023, has celebrated the best of the small, poetic, creative, handmade web."} />
+		<style is:global>
+		body{
+margin: 0 5vw;
+}
+ul{
+list-style-image: url("data:image/gif;base64,R0lGODdhDQARAJEAAAAAAE1Bof///wAAACH5BAkAAAMALAAAAAANABEAAAIknI9pcazhRkxwqcbmkxdnD4WVNC4aVT5Z2ljs6JRyh7DXSQ8FADs=");
+padding-left: 17px;
+}
+#transept{
+
+padding-bottom: 2em;
+}
+#transept > hr{
+margin: 1em 12% 3em;
+animation: fade 3s;
+}
+#sky{
+height: 12vh;
+width: 100%;
+display: flex;
+align-items: end;
+background-image: url("/media/clouds.svg");
+background-position: 70% bottom;
+background-repeat: repeat;
+background-size: 600px;
+animation: fade 0.5s;
+}
+#interior{
+display:flex;
+justify-content: center;
+align-items: center;
+}
+.doorway{
+flex-basis: 250px;
+}
+.spacer{
+flex-basis: 250px;
+margin:1em;
+}
+.center{
+box-sizing: border-box;
+flex-basis: 40%;
+flex-shrink:0;
+display: flex;
+justify-content: center;
+align-items: center;
+max-width: 60vh;
+margin: 0 2vw;
+border-radius: 1em;
+padding: 0.5em;
+height: 60vh;
+}
+.center > video, .center > img, .center > svg{
+border-radius: 0.5em;
+width: 100%;
+height: 100%;
+}
+.border > video, .border > img, .border > svg{
+object-fit: cover;
+}
+.center > svg *, .doorway-interior > svg *, #nav-left *{
+fill: var(--foreground);
+}
+.border{
+border: 3px solid;
+}
+main{
+background-color: var(--background);
+background-image: url("/grain.png");
+background-size: 64px 64px;
+background-attachment: fixed;
+padding-bottom: 2em;
+}
+.content{
+margin:auto;
+max-width: 600px;
+}
+table{
+border-collapse: collapse;
+width: 100%;
+margin-bottom: 3em;
+}
+th,td{
+border:3px solid;
+padding: 0px;
+}
+th{
+vertical-align:top;
+font-weight: normal;
+font-family: "Avara", serif;
+padding: 4px;
+text-align: left;
+}
+.table-heading{
+width: 25%;
+}
+td > a{
+transition: 0.5s;
+transition-property: background-color;
+display:block;
+padding: 4px;
+}
+td > a:hover{
+background-color: var(--hover);
+}
+
+
+
+@media (max-width: 800px) {
+	body{
+	display: block;
+	}
+	section.arch{
+	position: static
+	}
+	table{
+	font-size: 85%;
+	}
+}
+@keyframes fade {
+  0%{ opacity: 0.2 }
+  100% { opacity: 1 }
+}
+
+@media (max-width: 700px) {
+	.arch{top: -16px;}
+	#interior{flex-wrap: wrap;justify-content: space-evenly;}
+	.center{
+		flex-basis: 100%;
+		margin: 0;
+		margin-bottom: 0.5em;
+		order: 0;
+	}
+	main{padding: 4vw;}
+	nav{font-size: 140%;}
+	#nav-left{width: 30px;}
+	#transept .doorway{
+		margin: 0.5em;
+		order:2;
+		height: 100%;
+		border-radius: 0;
+		box-sizing: content-box;
+		max-width: initial;
+		flex-basis: 35vw;
+	}
+	#transept .doorway:first-child{border-radius: 400px 0.5em 0.5em 400px;}
+	#transept .doorway:last-child{border-radius: 0.5em 400px 400px 0.5em;}
+	#transept .caption:hover{
+	background-color: initial;
+	}
+	#transept .caption{border-top: none;}
+	#transept .doorway-interior{display: none;}
+	.spacer{order:2;flex-basis: 35vw;}
+	#sky{
+		height: 14vh;
+		background-size: 400px;
+	}
+}
+nav{
+font-weight: normal;
+font-family: "Avara", serif;
+font-size: 200%;
+}
+nav a{
+text-decoration: none;
+}
+#nav-right{
+position: fixed;
+top: 0;
+right: 1vw;
+z-index: 2;
+padding: 0;
+display: flex;
+margin:0;
+}
+ul#nav-right {
+list-style: none;
+}
+#nav-right li{
+list-style-type: none;
+padding: 0;
+}
+#nav-left{
+position: fixed;
+top: 0.25em;
+left: 1vw;
+z-index: 2;
+}
+
+.arch{
+position: fixed;
+top: -10vw;
+width: 40vw;
+pointer-events: none;
+}
+.arch#arch-right{
+right:calc(5vw - 4px);
+}
+.arch#arch-left{
+left:calc(5vw - 4px);
+}
+.arch .line{
+stroke: var(--foreground);
+stroke-width:4px;
+}
+.arch .background{
+fill: var(--background-dirty);
+background-image: url("/grain.png");
+background-size: 64px 64px;
+background-attachment: fixed;
+pointer-events: visible;
+transition: 1s;
+}
+#background{
+background-color: var(--background-dirty);
+position: fixed;
+top: 0; bottom: 0; right: 0; left: 0;
+z-index: -1;
+transition: 1s;
+}
+#wall:hover > #background, #wall:hover > .arch .background{
+background-color: var(--hover);
+fill: var(--hover);
+}
+		</style>
+	</head>
+	<body>
+  <main>
+
+<section id="transept">
+  <div id="sky" style={{ backgroundPosition: `${skyPosition}% bottom` }}></div>
+  <hr>
+  <div id="interior">
+    {prevPost ? (
+      <MiniArch slug={prevPost.id} />
+    ) : (
+      <div class="spacer"></div>
+    )}
+    
+    <Center href={content.projectUrl} class:list={["center", { "border": content.pictureFrame, } ]}>
+    {content.video ? (
+      <video autoplay muted loop playsinline poster={content.image} src={content.video}></video>
+    ) : (
+      <img src={content.image} alt="">
+    )}
+    </Center>
+    </a>
+    
+    {nextPost ? (
+      <MiniArch slug={nextPost.id} />
+    ) : (
+      <div class="spacer"></div>
+    )}
+  </div>
+</section>
+
+    <div class="content">
+      <slot />
+      <Footer />
+    </div>
+  </main>
+
+  <Wall />
+
+	</body>
+</html>

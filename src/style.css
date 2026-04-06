@@ -1,0 +1,238 @@
+@font-face { 
+font-family: "Avara"; 
+font-weight: normal; 
+src: url("/Avara-Italic.woff") format("woff"); 
+}
+
+:root{
+--foreground: rgb(77, 65, 161);
+--background: rgb(255 255 255);
+--hover: rgb(233, 233, 242);
+--subtle: rgb(166, 162, 206);
+--background-dirty: rgb(249, 251, 250);
+}
+
+body{
+color: var(--foreground);
+background-color: var(--background);
+background-image: url("/grain.png");
+background-size: 64px 64px;
+background-attachment: fixed;
+margin:0;
+font-family: Arial, sans-serif;
+font-size: 110%;
+}
+
+hr{
+border: none;
+border-top: 3px solid var(--foreground);
+}
+em{
+font-style: normal;
+transform: skew(16deg);
+display: inline-block;
+}
+
+h1,h2,h3{
+font-weight: normal;
+font-family: "Avara", serif;
+}
+h1 > a,h2 > a,h3 > a{
+text-transform: none;
+}
+h1{
+font-size: 200%;
+}
+a{
+color:inherit;
+text-transform: uppercase;
+}
+blockquote{
+border-left: 3px solid var(--hover);
+padding: 0 1em;
+margin: 1em 0.25em;
+}
+details{
+padding: 1em 0;
+border-top: 2px solid;
+}
+details p:last-child{
+margin-bottom:0;
+}
+summary{
+cursor: pointer;
+font-family: "Avara", serif;
+font-size: larger;
+}
+ul li{
+padding: 0.25em;
+}
+footer{
+margin: 3em 0;
+border-top: 3px solid var(--foreground);
+}
+footer ul{
+display: flex;
+justify-content: start;
+align-items: center;
+flex-wrap: wrap;
+padding:0;
+padding-top:1em;
+margin:0;
+}
+footer li{
+list-style-type: none;
+list-style-image: none;
+padding: 0.3em 1.2em 0 0.3em;
+}
+
+form#newsletter{
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+column-gap: 0.4em;
+font-weight: normal;
+}
+
+[type="submit"],[type="email"]{
+padding: 4px 8px;
+appearance: none;
+font-size: inherit;
+background-color: transparent;
+background-image: url("/grain.png");
+background-size: 64px 64px;
+color: var(--foreground);
+border: 3px solid var(--foreground);
+transition: 0.5s;
+}
+[type="email"]{
+flex-grow: 1;
+}
+[type="submit"]{
+cursor: pointer;
+}
+[type="submit"]:focus,[type="email"]:focus,[type="submit"]:hover,[type="email"]:hover{
+background-color: var(--hover);
+color: var(--foreground);
+}
+[type="submit"]:active{
+background-color: var(--foreground);
+color: var(--subtle);
+}
+
+/* ARCHES */
+.main-arch{
+box-sizing: border-box;
+border: 3px solid;
+border-radius: 400px 400px 0 0;
+height: 90vh;
+height: 90dvh;
+max-height: 1000px;
+width: 80%;
+max-width: 500px;
+display: flex;
+flex-direction: column;
+-webkit-clip-path: border-box;
+clip-path: border-box;
+background-image: url("/grain.png");
+background-size: 64px 64px;
+}
+.main-arch .interior{
+box-sizing: border-box;
+flex-grow: 1;
+padding-top: 2em;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.main-arch .arch-left, .arch-right{
+display: block;
+border-radius: 100px 100px 5px 5px;
+height: 40%;
+border: 3px solid var(--foreground);
+opacity: 0.2;
+width: 6em;
+position: relative;
+}
+.main-arch .arch-left{
+right: 10%;
+}
+.main-arch .arch-right{
+left: 10%;
+}
+.main-arch #pitcher{
+max-height: 50vh;
+flex-basis: 60%;
+flex-shrink: 0;
+}
+
+.caption{
+text-align: center;
+border-top: 3px solid;
+margin:0;
+padding: 0.5rem 0;
+transition: background-color 0.5s;
+background-image: url("/grain.png");
+background-size: 64px 64px;
+}
+.caption:hover{
+background-color: var(--hover);
+}
+
+.doorway{
+max-width: calc(50% - 2em);
+width: 100%;
+height: 50vh;
+box-sizing: border-box;
+border: 3px solid;
+border-radius: 400px 400px 5px 5px;
+margin: 1em;
+display: flex;
+flex-direction: column;
+justify-content: end;
+-webkit-clip-path: border-box;
+clip-path: border-box;
+animation: fade 1s;
+background-image: url("/grain.png");
+background-size: 64px 64px;
+}
+
+.panels{
+display: flex;
+flex-wrap: wrap;
+/* gap: 1em; */
+}
+.doorway-interior{
+box-sizing: border-box;
+flex-grow: 1;
+flex-shrink: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+-webkit-clip-path: border-box;
+clip-path: border-box;
+height: 70%;
+}
+.doorway-interior > img{
+padding-top: 1em;
+max-width: 100%;
+max-height: 70%;
+}
+
+
+
+/* 
+
+@media (prefers-color-scheme: dark) {
+	:root{
+	--foreground: rgb(255 255 255);
+	--background: rgb(23, 17, 61);
+	--hover:rgba(255, 255, 255, 0.1);
+	--subtle:rgba(255, 255, 255, 0.05);
+	}
+}
+ */
+
+

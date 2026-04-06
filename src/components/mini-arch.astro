@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+import { getCollection, getEntry } from 'astro:content';
+const { slug, title, shortTitle } = Astro.props;
+
+const arch = await getEntry('content', slug);
+
+//const coverPath = arch.data.cover;
+//const svgComponents = import.meta.glob<any>('/src/media/*.svg', { eager: true });
+//const Cover = svgComponents[coverPath]?.default;
+
+---
+
+<a class="doorway" href={"/" + slug}>
+  <div class="doorway-interior">
+    <img src={arch.data.cover}>
+    <!-- <Cover /> -->
+  </div>
+  <p class="caption">{arch.data.shortTitle}</p>
+</a>

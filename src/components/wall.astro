@@ -1,0 +1,56 @@
+---
+import Logo from '/src/components/logo.astro';
+
+import { getCollection } from "astro:content";
+
+const pathname = Astro.url.pathname;
+const allContent = await getCollection('content');
+allContent.sort((a, b) => a.data.order - b.data.order);
+
+---
+
+
+<nav>
+
+<ul id="nav-right">
+  {allContent
+    .filter(page => page.data.order > 0)
+    .map((page) => {
+      const pageHref = `/${page.id}`;
+      const isActive = pathname === pageHref || pathname.startsWith(`${pageHref}/`);
+      
+      return (
+        <li>
+          <a 
+            href={pageHref} 
+            aria-current={isActive ? 'page' : 'false'}
+            title={page.data.shortTitle}
+          >
+            {isActive ? '•' : '–'}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<a id="wall" href="/" data-umami-event="arch-clicked">
+  <div id="nav-left">
+    <Logo />
+  </div>
+  <svg id="arch-right" class="arch" viewBox="0 0 204 1777" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g fill="none" fill-rule="evenodd" transform="translate(0, 2)">
+          <path d="M203.952541,0 L203.952541,202 L202,202 C202,90.4384805 112.052879,0 0,0 L203.952541,0 Z" class="background" transform="translate(-1, 0)" ></path>
+          <path d="M202,1774.03869 C202,799.650863 202,275.637967 202,202 C202,91.54305 110.45695,0 0,0" class="line" vector-effect="non-scaling-stroke"></path>
+      </g>
+  </svg>
+
+  <svg id="arch-left" class="arch" viewBox="0 0 204 1777" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g fill="none" fill-rule="evenodd" transform="translate(2, 2)">
+          <path d="M0,0 L0,202 L1.98199352,202 C1.98199352,90.4384805 91.929115,0 203.981994,0 L0,0 Z" class="background" transform="translate(-1, 0)"></path>
+          <path d="M0,1774.03869 C0,799.650863 0,275.637967 0,202 C0,91.54305 91.54305,0 202,0" class="line" vector-effect="non-scaling-stroke"></path>
+      </g>
+  </svg>
+  <div id="background"></div>
+</a>
+</nav>

@@ -2,6 +2,7 @@
 *.pxd
 *.sketch
 *.command
+todo.md
 
 
 # OS generated files #

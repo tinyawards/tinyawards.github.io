@@ -1,0 +1,237 @@
+---
+import '/src/style.css';
+import SEO from '/src/components/seo.astro';
+import Footer from '/src/components/footer.astro';
+const { title, description} = Astro.props;
+
+const slotContent = await Astro.slots.render('default');
+const hasContent = !!slotContent?.trim();
+
+import Logo from '/src/components/logo.astro';
+import MainArch from '/src/components/main-arch.astro';
+import MiniArch from '/src/components/mini-arch.astro';
+
+---
+
+<html lang="en">
+<!-- 
+    GET YOUR OWN ARTISAN HTML @ 
+      ✨ CHEAP.URLS.LOAN ✨
+"MORE CONVENIENT THAN A NEW HOBBY" 
+-->
+	<head>
+		<SEO title={title ? "Tiny Awards " + title : "Tiny Awards"} description={description ? description : "This is the home of the Tiny Awards, which, since 2023, has celebrated the best of the small, poetic, creative, handmade web."} />
+		<style is:global>
+body{
+margin: 3em 2em;
+margin-left: calc(50% + 2em);
+}
+svg{
+fill: var(--foreground);
+}
+
+.arch{
+position: fixed;
+top:0;
+left:0;
+bottom:0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+}
+.header{
+margin: 6em 0 3em;
+display: flex;
+justify-content: space-around;
+align-items: center;
+flex-wrap: wrap;
+}
+#title{
+display: inline;
+padding: 1.6rem 1rem 1rem;
+border: 3px solid;
+border-radius: 100%;
+text-align: center;
+}
+
+.horizontal{
+display:flex;
+justify-content: space-between;
+align-items: center;
+}
+.horizontal > *{
+margin: 0.4em 0;
+}
+.horizontal > p{
+text-align:right;
+}
+.horizontal > hr{
+border:none;
+border-bottom: dotted 2px var(--foreground);
+transform: unset;
+padding-top: 0.5em;
+flex-grow:1;
+flex-basis: 15%;
+margin: 0 0.5em;
+}
+
+
+
+button#credit{
+cursor: pointer;
+font-family: inherit;
+font-size: inherit;
+color:inherit;
+background-color:inherit;
+border:none;
+padding:0;
+}
+button#credit:active{
+opacity: 0.7;
+}
+button#close{
+margin: 1em;
+display: block;
+cursor: pointer;
+font-family: inherit;
+font-size: inherit;
+padding: 4px 8px;
+appearance: none;
+background-color: var(--subtle);
+color: var(--foreground);
+border: 3px solid var(--foreground);
+transition: 0.5s;
+}
+button#close:hover{
+background-color: var(--hover);
+color: var(--foreground);
+}
+button#close:active{
+background-color: var(--foreground);
+color: var(--subtle);
+}
+.main-arch #pitcher-text{display:none;}
+@media (max-width: 800px) {
+	body{
+	margin: 3em 2em;
+	}
+	.header{margin: 4em 0;max-width: 100%;}
+	.text{
+	margin-left: auto;
+	}
+	footer{
+	margin: 0 2em;
+	}
+	.arch{
+	position: static;
+	width: 100%;
+	}
+	.horizontal{display: block;}
+	.horizontal > p{margin-bottom: 1.5em;text-align:initial;}
+	.horizontal hr{
+	display:none;
+	}
+}
+</style>
+	</head>
+	<body>
+	
+<div class="header">
+<h1 id="title">Tiny Awards</h1>
+<Logo />
+</div>
+
+<p>This is the home of the Tiny Awards, which, since 2023, has celebrated the best of the small, poetic, creative, handmade web.</p>
+<p>The Tiny Awards exist because we thought it was important to shine a spotlight on the sorts of personal web projects that tend to get overlooked by more traditional, larger or more commercial awards.</p>
+<p>Each year we ask the online world to nominate their favourite creative, non-commercial website built in the past 12 months. A panel of selected expert judges drawn from across the wide world of web-based creativity then pick their favourites. Finally, the entire web then votes upon this list to pick its favourite. The winner, as chosen by public vote, wins a small prize and a small handmade trophy (and we hopefully give an even smaller prize to each nominee).</p>
+<p class="center">That&apos;s it.</p>
+
+<h2>Timeline</h2>
+<div class="horizontal">
+<h3>June</h3><hr>
+<p>Open nominations for websites to the public</p>
+</div>
+<div class="horizontal">
+<h3>July</h3><hr>
+<p>Publish shortlist based on the judges selection</p>
+</div>
+<div class="horizontal">
+<h3>August</h3><hr>
+<p>Open it up to a public vote</p>
+</div>
+<div class="horizontal">
+<h3>September</h3><hr>
+<p>Announcement of winner</p>
+</div>
+
+<Logo rotate=40 center />
+
+<p>The Tiny Awards are made possible thanks to financial support from <a href="https://zine.kleinkleinklein.com/">ZINE</a>, a publication researching overlooked trends and our relationship with technology and media.</p>
+
+<div class="arch">
+<MainArch slug="nominations" />
+</div>
+
+<h2>Past Winners</h2>
+<div class="panels">
+  <MiniArch slug="2025" />
+  <MiniArch slug="2024" />
+  <MiniArch slug="2023" />
+</div>
+
+
+<Logo rotate=-10 center />
+
+
+  <h2>Keep up with the Tiny Awards</h2>
+  <p>Join the the Tiny Awards Mailing List to stay informed:</p>
+
+  <form action="https://buttondown.com/api/emails/embed-subscribe/tinyawards" method="post" id="newsletter">
+<!--   <label for="email">Email: </label> -->
+  <input type="email" name="email" placeholder="Email" />
+  <input type="hidden" value="1" name="embed" />
+  <input type="submit" value="Subscribe" id="form-button" data-umami-event="newsletter-sign-up" />
+  </form>
+  <p id="error-message" hidden>Something didn't work! <a href="https://buttondown.com/tinyawards">Subscribe manually</a></p>
+
+<Footer />
+
+<script is:inline>
+const form = document.getElementById('newsletter');
+const formButton = document.getElementById('form-button');
+const errorMessage = document.getElementById('error-message');
+let isSubmitted = false;
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  if (isSubmitted) {
+    formButton.value = 'Subscribe';
+    isSubmitted = false;
+  }
+  
+  formButton.value = 'Subscribing...';
+  const formData = new FormData(form);
+
+  fetch(form.action, {
+    method: form.method,
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log(response);
+    formButton.value = 'Subscribed!';
+    errorMessage.hidden = true;
+  })
+  .catch(error => {
+    console.error(error);
+    umami.track(error);
+    formButton.value = 'Subscribe';
+    errorMessage.hidden = false;
+  });
+});
+</script>
+	</body>
+</html>

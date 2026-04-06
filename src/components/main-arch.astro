@@ -1,0 +1,16 @@
+---
+//import Pitcher from '/src/media/pitcher.svg';
+
+import { getEntry } from 'astro:content';
+const { slug, title, shortTitle } = Astro.props;
+const arch = await getEntry('content', slug);
+---
+
+<a class="main-arch" href={"/" + slug} data-umami-event="homepage-arch">
+  <div class="interior">
+    <div class="arch-left"></div>
+      <img id="pitcher" src="/media/pitcher.svg">
+    <div class="arch-right"></div>
+  </div>
+  <p class="caption">{arch.data.shortTitle}</p>
+</a>

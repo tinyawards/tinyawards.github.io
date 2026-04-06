@@ -1,0 +1,54 @@
+---
+import { Astro } from 'astro';
+const site = Astro.site;
+
+const { title, description } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title,
+  "url": site,
+  "description": description,
+  "image": site + 'preview.png'
+};
+---
+
+<!-- Info -->
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="generator" content={Astro.generator}>
+<meta name="robots" content="index, follow">
+<meta charset="utf-8">
+<meta http-equiv="Content-Language" content="en-US">
+<meta name="viewport" content="width=device-width">
+<link rel="canonical" href={site}>
+<!-- Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<!-- Sitemaps/RSS -->
+<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="alternate" type="application/rss+xml" title="Tiny Awards News" href="https://buttondown.com/tinyawards/rss">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content={site}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content={site + 'preview.png'}>
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content={site}>
+<meta property="twitter:title" content={title}>
+<meta property="twitter:description" content={description}>
+<meta property="twitter:image" content={site + 'preview.png'}>
+<!-- Schema -->
+<meta itemprop="name" content={title}>
+<meta itemprop="url" content={site}>
+<meta itemprop="thumbnailUrl" content={site + 'android-chrome-192x192.png'}>
+<meta itemprop="image" content={site + 'preview.png'}>
+<!-- Additional Structured Data (JSON-LD) -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+<!-- Analytics -->
+<script defer data-domains="tinyawards.net,tinyawards.github.io" src="https://stats.urls.loan/script.js" data-website-id="cb5f1e3d-5f94-4153-84fc-6abb4931d509"></script>

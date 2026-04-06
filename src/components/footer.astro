@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+
+const pathname = Astro.url.pathname;
+const allContent = await getCollection('content');
+allContent.sort((a, b) => a.data.order - b.data.order);
+
+---
+
+<footer>
+<ul id="footer">
+	<li><a href="/">Index</a></li>
+  {allContent
+    .filter(page => page.data.order > 0)
+    .map((page) => {
+      const pageHref = `/${page.id}`;
+      return (
+        <li>
+          <a 
+            href={pageHref} 
+            title={page.data.shortTitle}
+          >
+            {page.data.shortTitle}
+          </a>
+        </li>
+      );
+    })
+  }
+	<li><a href="https://cheap.urls.loan" style="opacity:0.5">Site by CHEAP.URLS.LOAN</a></li>
+</ul>
+</footer>
