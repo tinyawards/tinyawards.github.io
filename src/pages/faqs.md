@@ -4,7 +4,6 @@ shortTitle: FAQs
 layout: /src/components/layout.astro
 image: /media/flower.svg
 cover: /media/flower.svg
-pictureFrame: true
 order: 1
 ---
 
