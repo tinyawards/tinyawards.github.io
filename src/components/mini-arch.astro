@@ -6,14 +6,12 @@ import { getCollection, getEntry } from 'astro:content';
 const { slug, title, shortTitle } = Astro.props;
 
 const arch = await getEntry('content', slug);
-
-//const coverPath = arch.data.cover;
-//const svgComponents = import.meta.glob<any>('/src/media/*.svg', { eager: true });
-//const Cover = svgComponents[coverPath]?.default;
+const reusedPage = arch.id === "nominations" || arch.id === "vote";
+const year = reusedPage ? `?${import.meta.env.year}` : "";
 
 ---
 
-<a class="doorway" href={"/" + slug}>
+<a class="doorway" href={"/" + slug + year}>
   <div class="doorway-interior">
     <img src={arch.data.cover}>
     <!-- <Cover /> -->

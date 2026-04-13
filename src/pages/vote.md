@@ -8,3 +8,4 @@ pictureFrame: false
 order: 2
 ---
 
+<meta http-equiv="refresh" content="0; url=/nominations?2026" />

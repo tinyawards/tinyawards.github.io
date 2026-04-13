@@ -8,4 +8,7 @@ export default defineConfig({
   devToolbar: {enabled: false},
   site: 'https://tinyawards.net',
   integrations: [sitemap()],
+  vite: {define: {
+      'import.meta.env.year': '2026',
+    },},
 });

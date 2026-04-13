@@ -6,7 +6,7 @@ const { slug, title, shortTitle } = Astro.props;
 const arch = await getEntry('content', slug);
 ---
 
-<a class="main-arch" href={"/" + slug} data-umami-event="homepage-arch">
+<a class="main-arch" href={"/" + slug + "?" + import.meta.env.year } data-umami-event="homepage-arch">
   <div class="interior">
     <div class="arch-left"></div>
       <img id="pitcher" src="/media/pitcher.svg">
