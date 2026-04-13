@@ -62,7 +62,7 @@ form.addEventListener('submit', function(event) {
 
 <table>
 	<tr>
-		<th class="table-heading" rowspan="17">Selection Committee</th>
+		<th class="table-heading" rowspan="18">Selection Committee</th>
 		<td><a href="https://celinenguyen.com/">Celine Ngyuen</a></td>
 	</tr>
 	<tr><td><a href="https://elliott.computer/">Elliott Cost</a></td></tr>
@@ -81,4 +81,5 @@ form.addEventListener('submit', function(event) {
 	<tr><td><a href="https://zuckerbaeckerei.com">Jana Weise</a></td></tr>
 	<tr><td><a href="https://nicksusi.com/">Nick Susi</a></td></tr>
 	<tr><td><a href="https://asterisques.com/">Ruby Thelot</a></td></tr>
+	<tr><td><a href="https://asterisques.com/">Rusty Foster</a></td></tr>
 </table>
