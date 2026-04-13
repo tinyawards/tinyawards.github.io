@@ -81,5 +81,5 @@ form.addEventListener('submit', function(event) {
 	<tr><td><a href="https://zuckerbaeckerei.com">Jana Weise</a></td></tr>
 	<tr><td><a href="https://nicksusi.com/">Nick Susi</a></td></tr>
 	<tr><td><a href="https://asterisques.com/">Ruby Thelot</a></td></tr>
-	<tr><td><a href="https://asterisques.com/">Rusty Foster</a></td></tr>
+	<tr><td><a href="https://www.todayintabs.com/">Rusty Foster</a></td></tr>
 </table>
