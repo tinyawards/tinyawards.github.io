@@ -63,7 +63,7 @@ form.addEventListener('submit', function(event) {
 <table>
 	<tr>
 		<th class="table-heading" rowspan="18">Selection Committee</th>
-		<td><a href="https://celinenguyen.com/">Celine Ngyuen</a></td>
+		<td><a href="https://celinenguyen.com/">Celine Nguyen</a></td>
 	</tr>
 	<tr><td><a href="https://elliott.computer/">Elliott Cost</a></td></tr>
 	<tr><td><a href="https://escapethealgorithm.substack.com/">Elan Ullendorff</a></td></tr>
