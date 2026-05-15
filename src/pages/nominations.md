@@ -78,7 +78,7 @@ form.addEventListener('submit', function(event) {
 	<tr><td><a href="https://botharetrue.substack.com/">Alex Dobrenko</a></td></tr>
 	<tr><td><a href="https://manuelmoreale.com/">Manuel Moreale</a></td></tr>
 	<tr><td><a href="https://ellesho.me/page/">Elle</a></td></tr>
-	<tr><td><a href="https://zuckerbaeckerei.com">Jana Weise</a></td></tr>
+	<tr><td><a href="https://zuckerbaeckerei.com">Jana Wiese</a></td></tr>
 	<tr><td><a href="https://nicksusi.com/">Nick Susi</a></td></tr>
 	<tr><td><a href="https://asterisques.com/">Ruby Thelot</a></td></tr>
 	<tr><td><a href="https://www.todayintabs.com/">Rusty Foster</a></td></tr>
