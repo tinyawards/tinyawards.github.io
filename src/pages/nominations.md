@@ -67,7 +67,7 @@ form.addEventListener('submit', function(event) {
 	</tr>
 	<tr><td><a href="https://elliott.computer/">Elliott Cost</a></td></tr>
 	<tr><td><a href="https://escapethealgorithm.substack.com/">Elan Ullendorff</a></td></tr>
-	<tr><td><a href="https://pketh.org/">Pketh</a></td></tr>
+	<tr><td><a href="https://pketh.org/">Pirijan Ketheswaran</a></td></tr>
 	<tr><td><a href="https://matt-prebeg.com/">Matt Prebeg</a></td></tr>
 	<tr><td><a href="https://poolsuite.net/">Marty Bell</a></td></tr>
 	<tr><td><a href="https://www.phonetime.news/">Kristin Merrilees</a></td></tr>
