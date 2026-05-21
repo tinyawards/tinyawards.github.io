@@ -60,8 +60,8 @@ Look, this is complicated. We understand that people have strong feelings about 
 Basically speaking, the Tiny Awards approach to generative AI is:
 
 * We don't have a blanket ban on entries that use Gen AI.
-* That said, if it looks like a website that's been coded and written using an LLM and illustrated entirely with Stable Diffusion output, it's unlikely to get shortlisted.
-* We are trying to celebrate the human, personal internet—it's up to you to decide whether or not a website created using machine-generated code and content really fits the bill here (clue: it doesn't).
+* That said, if it looks like a website that’s been coded and written using an LLM, it’s not going to get shortlisted.
+* We are trying to celebrate the human, personal internet—it’s up to you to decide whether or not a website created using machine-generated code, concepts and content really fits the bill here (clue: it doesn’t).
 
 </details>
 <details name="faqs">
