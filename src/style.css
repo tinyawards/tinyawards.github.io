@@ -95,16 +95,17 @@ column-gap: 0.4em;
 font-weight: normal;
 }
 
-[type="submit"],[type="email"]{
+[type="submit"],[type="email"],[type="text"],[type="url"],textarea{
 padding: 4px 8px;
 appearance: none;
 font-size: inherit;
+resize: none;
 background-color: transparent;
 background-image: url("/grain.png");
 background-size: 64px 64px;
 color: var(--foreground);
 border: 3px solid var(--foreground);
-transition: 0.5s;
+transition: background-color 0.5s;
 }
 [type="email"]{
 flex-grow: 1;
@@ -112,7 +113,16 @@ flex-grow: 1;
 [type="submit"]{
 cursor: pointer;
 }
-[type="submit"]:focus,[type="email"]:focus,[type="submit"]:hover,[type="email"]:hover{
+[type="submit"]:focus,
+[type="submit"]:hover,
+[type="text"]:focus,
+[type="text"]:hover,
+[type="url"]:focus,
+[type="url"]:hover,
+textarea:focus,
+textarea:hover,
+[type="email"]:focus,
+[type="email"]:hover {
 background-color: var(--hover);
 color: var(--foreground);
 }
@@ -220,6 +230,53 @@ padding-top: 1em;
 max-width: 100%;
 max-height: 70%;
 }
+
+#submissions p{
+display: flex;
+align-items: stretch;
+border: 3px solid var(--foreground);
+/* flex-direction: column; */
+width: 100%;
+margin: 0;
+}
+#submissions p + p{
+border-top: none;
+}
+
+#submissions [type="submit"]{
+width: 100%
+}
+
+#submissions [type="email"],
+#submissions [type="text"],
+#submissions [type="url"]{
+appearance: none;
+font-size: inherit;
+background-image: none;
+color: var(--foreground);
+border:none;
+border-left: 3px solid var(--foreground);
+outline: none;
+width: 100%;
+}
+
+#submissions .label{
+padding: 0.5em;
+flex-basis: 40%;
+font-weight: normal;
+flex-shrink: 0;
+}
+#submissions p > input{
+flex-grow: 1;
+}
+
+#submissions label.required:after {
+content: '*';
+color: var(--subtle)
+}
+
+
+
 
 
 
