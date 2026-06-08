@@ -266,16 +266,18 @@ const formButton = document.getElementById('form-button');
 
 let isSubmitted = false;
 
+/*
 const urlInput = document.getElementById('url');
 urlInput.addEventListener('input', () => {
   const url = urlInput.value;
-  const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+  const urlRegex = /^(.*?:\/\/)?(.*)$/;
   if (urlRegex.test(url)) {
     urlInput.setCustomValidity('');
   } else {
     urlInput.setCustomValidity('Enter a URL');
   }
 });
+*/
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
