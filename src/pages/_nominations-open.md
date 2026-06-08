@@ -60,11 +60,10 @@ form.addEventListener('submit', function(event) {
 
 ## 2026 Selection Committee
 
-
 <table>
 	<tr>
 		<th class="table-heading" rowspan="18">Selection Committee</th>
-		<td><a href="https://celinenguyen.com/">Celine Ngyuen</a></td>
+		<td><a href="https://celinenguyen.com/">Celine Nguyen</a></td>
 	</tr>
 	<tr><td><a href="https://elliott.computer/">Elliott Cost</a></td></tr>
 	<tr><td><a href="https://escapethealgorithm.substack.com/">Elan Ullendorff</a></td></tr>
@@ -72,6 +71,10 @@ form.addEventListener('submit', function(event) {
 	<tr><td><a href="https://matt-prebeg.com/">Matt Prebeg</a></td></tr>
 	<tr><td><a href="https://poolsuite.net/">Marty Bell</a></td></tr>
 	<tr><td><a href="https://www.phonetime.news/">Kristin Merrilees</a></td></tr>
+	<tr><td><a href="https://annierau.com/">Annie Rauwerda</a></td></tr>
+	<tr><td><a href="https://breakfastatmyhouse.com/">Tiffany Ng</a></td></tr>
+	<tr><td><a href="https://everythingi.love/">Chia Amisola</a></td></tr>
+	<tr><td><a href="https://waxy.org/">Andy Baio</a></td></tr>
 	<tr><td><a href="https://botharetrue.substack.com/">Alex Dobrenko</a></td></tr>
 	<tr><td><a href="https://manuelmoreale.com/">Manuel Moreale</a></td></tr>
 	<tr><td><a href="https://ellesho.me/page/">Elle</a></td></tr>
