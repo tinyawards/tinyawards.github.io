@@ -275,7 +275,16 @@ content: '*';
 color: var(--subtle)
 }
 
-
+.callout{
+border: 3px solid;
+padding: 0.5em;
+background-image: url("/grain.png");
+background-size: 64px 64px;
+border-radius: 5px 5px;
+}
+.callout > p{
+margin: 0;
+}
 
 
 

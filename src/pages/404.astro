@@ -1,0 +1,72 @@
+---
+import '/src/style.css';
+import SEO from '/src/components/seo.astro';
+import Footer from '/src/components/footer.astro';
+const { title, description} = Astro.props;
+
+const slotContent = await Astro.slots.render('default');
+const hasContent = !!slotContent?.trim();
+
+import Logo from '/src/components/logo.astro';
+import MainArch from '/src/components/main-arch.astro';
+import MiniArch from '/src/components/mini-arch.astro';
+
+---
+
+<html lang="en">
+<!-- 
+    GET YOUR OWN ARTISAN HTML @ 
+      ✨ CHEAP.URLS.LOAN ✨
+"MORE CONVENIENT THAN A NEW HOBBY" 
+-->
+	<head>
+		<SEO title={title ? "Tiny Awards " + title : "Tiny Awards"} description={description ? description : "This is the home of the Tiny Awards, which, since 2023, has celebrated the best of the small, poetic, creative, handmade web."} />
+		<style is:global>
+body{
+margin: 3em 2em;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+svg{
+fill: var(--foreground);
+}
+
+h1{
+font-size: 300%;
+text-align: center;
+margin:0;
+}
+p{
+text-align: center;
+}
+#title{
+display: inline;
+padding: 1.6rem 1rem 1rem;
+border: 3px solid;
+border-radius: 100%;
+text-align: center;
+}
+#pitcher{
+max-height: 50vh;
+flex-basis: 60%;
+flex-shrink: 0;
+}
+</style>
+	</head>
+	<body>
+<a class="main-arch" href="/" style="margin: auto;height:60vh;height:60dvh; max-width:400px;">
+  <div class="interior">
+      <img id="pitcher" src="/media/pitcher.svg">
+  </div>
+  <p class="caption">Return Home</p>
+</a>
+<Logo rotate=-10 center />
+
+<h1>Oops!</h1>
+<p>404: Page Not Found</p>
+
+
+
+	</body>
+</html>
