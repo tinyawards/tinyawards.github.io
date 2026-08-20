@@ -14,49 +14,11 @@ Nominations for the 2026 awards are closed! Thank you for your submissions! This
 
 If you would like to be notified when voting opens, you can subscribe to  "Tiny Awards News" below — we promise we'll never do anything weird, nefarious or unpleasantly-commercial with your email.
 
-<form action="https://buttondown.com/api/emails/embed-subscribe/tinyawards" method="post" id="newsletter">
-<input type="email" name="email" placeholder="Email" />
-<input type="hidden" value="1" name="embed" />
-<input type="submit" value="Subscribe" id="form-button" data-umami-event="newsletter-sign-up" />
-</form>
-<p id="error-message" hidden>Something didn't work! <a href="https://buttondown.com/tinyawards">Subscribe manually</a></p>
-
-<script is:inline>
-const form = document.getElementById('newsletter');
-const formButton = document.getElementById('form-button');
-const errorMessage = document.getElementById('error-message');
-let isSubmitted = false;
-
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  if (isSubmitted) {
-    formButton.value = 'Subscribe';
-    isSubmitted = false;
-  }
-
-  formButton.value = 'Subscribing...';
-  const formData = new FormData(form);
-
-  fetch(form.action, {
-    method: form.method,
-    body: formData
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    console.log(response);
-    formButton.value = 'Subscribed!';
-    errorMessage.hidden = true;
-  })
-  .catch(error => {
-    console.error(error);
-    umami.track(error);
-    formButton.value = 'Subscribe';
-    errorMessage.hidden = false;
-  });
-});
-</script>
+  <iframe
+  scrolling="no"
+  style="width:100%;height:200px;border:none;"
+  src="https://buttondown.com/tinyawards?as_embed=true"
+></iframe>
 
 ## 2026 Selection Committee
 
