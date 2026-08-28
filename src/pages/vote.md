@@ -389,6 +389,7 @@ form.addEventListener('submit', function(event) {
   formButton.disabled = true;
   const vote = document.querySelector("[name=vote]:checked");
   document.cookie = "vote=" + vote.value + ";voteURL=" + vote.dataset.voteUrl + ";max-age=15768000"
+  document.cookie ="voteURL=" + vote.dataset.voteUrl + ";max-age=15768000"
 
   const formData = new FormData(form);
 
