@@ -78,6 +78,14 @@ order: 2
 
 <p id="vote-message">You voted for <a id="vote-record" href=""></a>!</p>
 
+Want to be the first to know this year's winner? Join the Tiny Awards Newsletter—we promise we'll never do anything weird, nefarious or unpleasantly-commercial with your email.
+
+<iframe
+  scrolling="no"
+  style="width:100%;height:200px;border:none;"
+  src="https://buttondown.com/tinyawards?as_embed=true"
+></iframe>
+
 Here are all the nominees this year as chosen by the [2026 Selection Committee](#2026-selection-committee).
 
 <table>
@@ -96,14 +104,6 @@ Here are all the nominees this year as chosen by the [2026 Selection Committee](
 	<tr><td><a href="https://pauljulianbrown.com/" target="_blank">Paul Julian Brown's ipod</a></td></tr>
 	<tr><td><a href="https://hallucinate.site/" target="_blank">Hallucinate</a></td></tr>
 </table>
-
-Want to be the first to know this year's winner? Join the Tiny Awards Newsletter—we promise we'll never do anything weird, nefarious or unpleasantly-commercial with your email.
-
-  <iframe
-  scrolling="no"
-  style="width:100%;height:200px;border:none;"
-  src="https://buttondown.com/tinyawards?as_embed=true"
-></iframe>
 
 </div>
 
