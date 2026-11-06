@@ -130,3 +130,6 @@ If, somehow, you have an excellent idea for delivering plutocratic returns from 
   </iframe>
 
 </details>
+
+<!-- Badge Courtesy of https://ivndbt.com/ 😊 -->
+<img style="display:block;margin:1em auto" src="/badge.gif">
